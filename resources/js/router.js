@@ -5,7 +5,7 @@ import Home from './Home'
 import Register from './auth/Register'
 import Login from './auth/Login'
 
-// import Dashboard from './pages/user/Dashboard'
+import Dashboard from './pages/Dashboard'
 // import AdminDashboard from './pages/admin/Dashboard'
 
 // Routes
@@ -35,14 +35,14 @@ const routes = [
         }
     },
     // USER ROUTES
-    // {
-    //     path: '/dashboard',
-    //     name: 'dashboard',
-    //     component: Dashboard,
-    //     meta: {
-    //         auth: true
-    //     }
-    // },
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard,
+        meta: {
+            auth: true
+        }
+    },
     // ADMIN ROUTES
     // {
     //     path: '/admin',

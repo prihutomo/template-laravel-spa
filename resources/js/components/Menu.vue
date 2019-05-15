@@ -10,16 +10,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" v-if="!$auth.check()" v-for="(route, key) in routes.unlogged" v-bind:key="route.path">
-                    <router-link class="nav-link"  :to="{ name : route.path }" :key="key">
-                        {{route.name}}
-                    </router-link>
-                </li>
                 <!--LOGGED USER-->
                 <li class="nav-item" v-if="$auth.check(1)" v-for="(route, key) in routes.user" v-bind:key="route.path">
                     <router-link class="nav-link"  :to="{ name : route.path }" :key="key">
@@ -32,9 +22,24 @@
                         {{route.name}}
                     </router-link>
                 </li>
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" v-if="!$auth.check()" v-for="(route, key) in routes.unlogged" v-bind:key="route.path">
+                    <router-link class="nav-link"  :to="{ name : route.path }" :key="key">
+                        {{route.name}}
+                    </router-link>
+                </li>
                 <!--LOGOUT-->
-                <li class="nav-item" v-if="$auth.check()">
-                    <a class="nav-link" href="#" @click.prevent="$auth.logout()">Logout</a>
+                <li class="nav-item dropdown"  v-if="$auth.check()">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                       *<span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" @click.prevent="$auth.logout()">Log Out</a>
+                    </div>
                 </li>
             </ul>
         </div>
